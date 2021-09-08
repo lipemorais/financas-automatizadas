@@ -6,8 +6,15 @@ name = "pypi"
 [packages]
 pynubank = "*"
 python-decouple = "*"
+requests = "*"
 
 [dev-packages]
+ipdb = "*"
+darker = "*"
+freezegun = "*"
+pytest = "*"
+pytest-cov = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.9"
