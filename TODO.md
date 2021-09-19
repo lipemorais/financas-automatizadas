@@ -1,12 +1,13 @@
 # TODO
 - Account
-  - Put everything together on main
-  - Send all transactions at once ynab.send_account_transaction
+  - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - Card
   - Get transactions
   - Filter transactions
   - Send it to ynab
-    
+- NICE_TO_HAVE: Add mypy to verify type hint
+- NICE_TO_HAVE: schemas
+
 # DONE 
  - Spikes with pynubank
  - Setup python-decouple
@@ -15,6 +16,7 @@
  - Create a README
      - Setup instruction
  - Account
+  - Put everything together on main
   - Get transactions
   - Filter transactions
   - Send it to ynab - transaction_schema = {"amount": 000, "category": "string", "date": "2021-09-07"}
