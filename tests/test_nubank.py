@@ -6,6 +6,7 @@ from freezegun import freeze_time
 class TestAccount(TestCase):
     @freeze_time("2021-09-07")
     def test_get_account_feed_events(self):
+        # Arrange
         account_feed = [
             {
                 "id": "6137cd3a-58a4-4a0a-a04e-8be7b347d38d",
@@ -76,6 +77,8 @@ class TestAccount(TestCase):
             }
         ]
 
+        # Act
         filtered_transactions = filter_account_transactions(account_feed=account_feed)
 
+        # Assert
         self.assertEqual(filtered_transactions, expected_transactions)
