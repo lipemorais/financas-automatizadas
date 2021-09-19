@@ -3,7 +3,7 @@ from financas_automatizadas.ynab import send_account_transaction
 import requests_mock
 
 
-class SendAccountTransactionsToYNAB(TestCase):
+class SendAccountTransactionsToYNABTest(TestCase):
     @requests_mock.Mocker()
     def test_send_account_transaction_to_ynab(
         self, requests_mock: requests_mock.Mocker
