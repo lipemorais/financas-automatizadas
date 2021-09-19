@@ -1,9 +1,10 @@
+from datetime import datetime
 from unittest import TestCase
 from financas_automatizadas.nubank import filter_account_transactions
 from freezegun import freeze_time
 
 
-class TestAccount(TestCase):
+class AccountTest(TestCase):
     @freeze_time("2021-09-07")
     def test_get_account_feed_events(self):
         # Arrange
@@ -78,7 +79,9 @@ class TestAccount(TestCase):
         ]
 
         # Act
-        filtered_transactions = filter_account_transactions(account_feed=account_feed)
+        filtered_transactions = filter_account_transactions(
+            account_feed=account_feed, threshold=datetime.now()
+        )
 
         # Assert
         self.assertEqual(filtered_transactions, expected_transactions)
