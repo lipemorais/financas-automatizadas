@@ -13,7 +13,7 @@ def send_account_transaction(account_transactions: [dict]) -> [dict]:
     base_url = "https://api.youneedabudget.com/v1"
     moraix_budget_id = "72bf90ed-5c22-4f88-bc02-95fcd82474cb"
     url = f"{base_url}/budgets/{moraix_budget_id}/transactions"
-    responses = []
+    transactions = []
 
     for account_transaction in account_transactions:
         payload = {
@@ -31,9 +31,6 @@ def send_account_transaction(account_transactions: [dict]) -> [dict]:
             }
         }
 
-        print(url, payload, headers)
-
-        # response = requests.post(url, json=payload, headers=headers)
-        # print(response.json(), response.status_code)
-        responses.append({})
-    return responses
+        response = requests.post(url, json=payload, headers=headers)
+        transactions.append(response.json())
+    return transactions
