@@ -13,7 +13,7 @@ def send_account_transaction(account_transactions: [dict]) -> [dict]:
     base_url = "https://api.youneedabudget.com/v1"
     moraix_budget_id = "72bf90ed-5c22-4f88-bc02-95fcd82474cb"
     url = f"{base_url}/budgets/{moraix_budget_id}/transactions"
-    transactions = []
+    created_transactions = []
 
     for account_transaction in account_transactions:
         payload = {
@@ -32,5 +32,33 @@ def send_account_transaction(account_transactions: [dict]) -> [dict]:
         }
 
         response = requests.post(url, json=payload, headers=headers)
+        created_transactions.append(response.json())
+
+    return created_transactions
+
+
+def send_card_transaction(card_transactions: [dict]) -> [dict]:
+    base_url = "https://api.youneedabudget.com/v1"
+    moraix_budget_id = "72bf90ed-5c22-4f88-bc02-95fcd82474cb"
+    url = f"{base_url}/budgets/{moraix_budget_id}/transactions"
+    transactions = []
+
+    for card_transaction in card_transactions:
+        payload = {
+            "transaction": {
+                "account_id": credit_card_account_id,
+                "date": card_transaction["time"].split("T")[0],
+                "amount": card_transaction["amount"],
+                "payee_id": None,
+                "payee_name": None,
+                "category_id": None,
+                "memo": f"{card_transaction['description']} - {card_transaction['title']}",
+                "cleared": "cleared",
+                "approved": True,
+                "import_id": card_transaction["id"],
+            }
+        }
+        response = requests.post(url, json=payload, headers=headers)
         transactions.append(response.json())
+
     return transactions
