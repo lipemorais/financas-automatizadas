@@ -16,7 +16,6 @@ O objetivo desse projeto é pegar suas transações do Nubank e enviar para o YN
 ### Run
 `make run` or `make r`
 
+# Resources
 
-# Docs
-
-- 
+- YNAB API doc => https://api.youneedabudget.com/v1
