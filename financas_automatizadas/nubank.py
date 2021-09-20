@@ -20,3 +20,7 @@ def filter_account_transactions(account_feed: [dict], threshold: datetime) -> [d
     ]
 
     return filtered_account_transactions
+
+
+def filter_card_transactions(card_feed: [dict], threshold: datetime):
+    return None
