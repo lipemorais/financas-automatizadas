@@ -8,6 +8,10 @@
 - NICE_TO_HAVE: Add mypy to verify type hint
 - NICE_TO_HAVE: schemas
 - add CI
+- CRON options
+  - Github Actions - https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
+  - Cron no computador
+  - Heroku Schedule
 
 # DONE 
  - Spikes with pynubank
