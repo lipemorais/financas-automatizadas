@@ -2,3 +2,4 @@ cert.p12
 .idea
 .env
 .coverage
+__pycache__/
