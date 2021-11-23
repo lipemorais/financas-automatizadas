@@ -5,9 +5,11 @@ from pynubank import Nubank
 
 from financas_automatizadas import nubank
 from financas_automatizadas import ynab
+from financas_automatizadas.nubank import setup_nubank_client_authentication
 
 
 def main(nubank_client: Nubank = Nubank()) -> [dict]:
+    setup_nubank_client_authentication()
     created_account_transactions_in_ynab = sync_account(nubank_client)
     created_card_transactions_in_ynab = sync_card(nubank_client)
 
