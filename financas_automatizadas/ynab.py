@@ -48,7 +48,7 @@ def send_card_transaction(card_transactions: [dict]) -> [dict]:
             "transaction": {
                 "account_id": credit_card_account_id,
                 "date": card_transaction["time"].split("T")[0],
-                "amount": card_transaction["amount"],
+                "amount": card_transaction["amount"] * 10,
                 "payee_id": None,
                 "payee_name": None,
                 "category_id": None,
