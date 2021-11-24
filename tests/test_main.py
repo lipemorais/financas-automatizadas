@@ -1,4 +1,3 @@
-from datetime import datetime
 from unittest import TestCase, mock
 from unittest.mock import MagicMock
 
@@ -7,7 +6,6 @@ from freezegun import freeze_time
 from pynubank import MockHttpClient
 
 from financas_automatizadas.main import main
-from financas_automatizadas.nubank import parse_transaction_time
 
 
 class MainTest(TestCase):
@@ -79,65 +77,67 @@ class MainTest(TestCase):
                 "amount": 4.0,
             },
         ]
-        card_feed_response = [
-            {
-                "description": "Willy da Silva Mendes",
-                "category": "transaction",
-                "amount": 200,
-                "time": "2021-08-27T22:29:04Z",
-                "source": "upfront_national",
-                "title": "lazer",
-                "amount_without_iof": 200,
-                "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
-                "details": {"status": "settled", "subcategory": "card_present"},
-                "id": "61296731-3757-4f04-a66e-46c2b510d3a0",
-                "_links": {
-                    "self": {
-                        "href": "https://prod-s0-facade.nubank.com.br/api/transactions/61296731-3757-4f04-a66e-46c2b510d3a0"
-                    }
+        card_feed_response = {
+            "events": [
+                {
+                    "description": "Willy da Silva Mendes",
+                    "category": "transaction",
+                    "amount": 200,
+                    "time": "2021-08-27T22:29:04Z",
+                    "source": "upfront_national",
+                    "title": "lazer",
+                    "amount_without_iof": 200,
+                    "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
+                    "details": {"status": "settled", "subcategory": "card_present"},
+                    "id": "61296731-3757-4f04-a66e-46c2b510d3a0",
+                    "_links": {
+                        "self": {
+                            "href": "https://prod-s0-facade.nubank.com.br/api/transactions/61296731-3757-4f04-a66e-46c2b510d3a0"
+                        }
+                    },
+                    "tokenized": False,
+                    "href": "nuapp://transaction/61296731-3757-4f04-a66e-46c2b510d3a0",
                 },
-                "tokenized": False,
-                "href": "nuapp://transaction/61296731-3757-4f04-a66e-46c2b510d3a0",
-            },
-            {
-                "description": "Pag*Tananimalthadesou",
-                "category": "transaction",
-                "amount": 500,
-                "time": "2021-08-27T22:27:05Z",
-                "source": "upfront_national",
-                "title": "outros",
-                "amount_without_iof": 500,
-                "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
-                "details": {"status": "settled", "subcategory": "card_present"},
-                "id": "612966b9-01cc-4a11-8b5e-cb580e63ac10",
-                "_links": {
-                    "self": {
-                        "href": "https://prod-s0-facade.nubank.com.br/api/transactions/612966b9-01cc-4a11-8b5e-cb580e63ac10"
-                    }
+                {
+                    "description": "Pag*Tananimalthadesou",
+                    "category": "transaction",
+                    "amount": 500,
+                    "time": "2021-08-27T22:27:05Z",
+                    "source": "upfront_national",
+                    "title": "outros",
+                    "amount_without_iof": 500,
+                    "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
+                    "details": {"status": "settled", "subcategory": "card_present"},
+                    "id": "612966b9-01cc-4a11-8b5e-cb580e63ac10",
+                    "_links": {
+                        "self": {
+                            "href": "https://prod-s0-facade.nubank.com.br/api/transactions/612966b9-01cc-4a11-8b5e-cb580e63ac10"
+                        }
+                    },
+                    "tokenized": False,
+                    "href": "nuapp://transaction/612966b9-01cc-4a11-8b5e-cb580e63ac10",
                 },
-                "tokenized": False,
-                "href": "nuapp://transaction/612966b9-01cc-4a11-8b5e-cb580e63ac10",
-            },
-            {
-                "description": "Usina da Massa",
-                "category": "transaction",
-                "amount": 3250,
-                "time": "2021-09-07T22:51:41Z",
-                "source": "upfront_national",
-                "title": "restaurante",
-                "amount_without_iof": 3250,
-                "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
-                "details": {"status": "settled", "subcategory": "card_present"},
-                "id": "61281afe-d463-468b-a043-e3bcba8a5931",
-                "_links": {
-                    "self": {
-                        "href": "https://prod-s0-facade.nubank.com.br/api/transactions/61281afe-d463-468b-a043-e3bcba8a5931"
-                    }
+                {
+                    "description": "Usina da Massa",
+                    "category": "transaction",
+                    "amount": 3250,
+                    "time": "2021-09-07T22:51:41Z",
+                    "source": "upfront_national",
+                    "title": "restaurante",
+                    "amount_without_iof": 3250,
+                    "account": "55c0e5cc-5014-4d2b-800a-c40c86c6448b",
+                    "details": {"status": "settled", "subcategory": "card_present"},
+                    "id": "61281afe-d463-468b-a043-e3bcba8a5931",
+                    "_links": {
+                        "self": {
+                            "href": "https://prod-s0-facade.nubank.com.br/api/transactions/61281afe-d463-468b-a043-e3bcba8a5931"
+                        }
+                    },
+                    "tokenized": False,
+                    "href": "nuapp://transaction/61281afe-d463-468b-a043-e3bcba8a5931",
                 },
-                "tokenized": False,
-                "href": "nuapp://transaction/61281afe-d463-468b-a043-e3bcba8a5931",
-            },
-        ]
+            ]
+        }
         mocked_nu_instance = MagicMock()
         MockedNubank.return_value = mocked_nu_instance
         mocked_nu_instance.get_account_feed.return_value = account_feed_response
@@ -188,14 +188,3 @@ class MainTest(TestCase):
         self.assertEqual(
             result, [ynab_account_transaction_response, ynab_card_transaction_response]
         )
-
-    def test_time_parser(self):
-        # Arrange
-        transaction_time = "2021-08-27T22:27:05Z"
-        expected_datetime = datetime.fromisoformat("2021-08-27T22:27:05")
-
-        # Act
-        result = parse_transaction_time(transaction_time=transaction_time)
-
-        # Assert
-        self.assertEqual(expected_datetime, result)

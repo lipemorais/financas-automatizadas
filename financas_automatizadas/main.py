@@ -1,6 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from pprint import pprint
 
+from dateutil.tz import tzutc
 from pynubank import Nubank
 
 from financas_automatizadas import nubank
@@ -9,7 +10,7 @@ from financas_automatizadas.nubank import setup_nubank_client_authentication
 
 
 def main(nubank_client: Nubank = Nubank()) -> [dict]:
-    setup_nubank_client_authentication()
+    setup_nubank_client_authentication(nubank_client=nubank_client)
     created_account_transactions_in_ynab = sync_account(nubank_client)
     created_card_transactions_in_ynab = sync_card(nubank_client)
 
@@ -26,28 +27,38 @@ def report_transactions(account, created_transaction_in_ynab):
 
 
 def sync_account(nubank_client: Nubank) -> [dict]:
+    pprint("Sync Account starting")
     account_feed = nubank_client.get_account_feed()
 
+    yesterday = datetime.now() - timedelta(days=1)
     filtered_account_transactions = nubank.filter_account_transactions(
-        account_feed=account_feed, threshold=datetime.now()
+        account_feed=account_feed, threshold=yesterday
     )
 
     created_transactions_in_ynab = ynab.send_account_transaction(
         account_transactions=filtered_account_transactions
     )
 
+    pprint("Sync Account ending")
     return created_transactions_in_ynab
 
 
 def sync_card(nubank_client: Nubank) -> [dict]:
-    card_feed = nubank_client.get_card_feed()
+    pprint("Sync Card starting")
+    card_feed = nubank_client.get_card_feed()["events"]
 
+    yesterday = datetime.now(tz=tzutc()) - timedelta(days=1)
     filtered_card_transactions = nubank.filter_card_transactions(
-        card_feed=card_feed, threshold=datetime.now()
+        card_feed=card_feed, threshold=yesterday
     )
 
     created_transactions_in_ynab = ynab.send_card_transaction(
         card_transactions=filtered_card_transactions
     )
 
+    pprint("Sync Card ending")
     return created_transactions_in_ynab
+
+
+if __name__ == "__main__":
+    main(nubank_client=Nubank())
