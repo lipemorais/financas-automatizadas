@@ -6,7 +6,7 @@ test: tests
 t: tests
 
 run:
-# 	python core/manage.py runserver
+	PYTHONPATH=$$PWD python financas_automatizadas/main.py
 
 r: run
 
