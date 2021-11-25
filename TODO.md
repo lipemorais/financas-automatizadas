@@ -1,13 +1,13 @@
 # TODO
+- CRON options
+  - Github Actions - https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
+  - Cron no computador
+  - Heroku Schedule
 - Account
   - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - NICE_TO_HAVE: Add mypy to verify type hint
 - NICE_TO_HAVE: schemas
 - add CI
-- CRON options
-  - Github Actions - https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
-  - Cron no computador
-  - Heroku Schedule
 
 # DONE 
  - Spikes with pynubank

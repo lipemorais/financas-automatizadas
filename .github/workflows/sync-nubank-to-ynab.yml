@@ -7,6 +7,11 @@ on:
         - trunk
 jobs:
   sync:
+    env:
+      - YNAB_TOKEN: ${{ secrets.YNAB_TOKEN }}
+      - CPF: ${{ secrets.CPF }}
+      - PASSWORD: ${{ secrets.PASSWORD }}
+      - PATH_TO_CERTIFICATE: ${{ secrets.PATH_TO_CERTIFICATE }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
