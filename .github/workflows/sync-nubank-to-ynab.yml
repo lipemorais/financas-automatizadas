@@ -12,6 +12,7 @@ jobs:
       CPF: ${{ secrets.CPF }}
       PASSWORD: ${{ secrets.PASSWORD }}
       PATH_TO_CERTIFICATE: ${{ secrets.PATH_TO_CERTIFICATE }}
+      NUBANK_CERTIFICATE: ${{ secrets.NUBANK_CERTIFICATE }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
