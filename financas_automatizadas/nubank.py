@@ -28,7 +28,7 @@ def filter_account_transactions(account_feed: [dict], threshold: datetime) -> [d
     filtered_account_transactions = [
         parse_pix_transaction(transaction)
         for transaction in account_feed
-        if threshold <= datetime.fromisoformat(transaction["postDate"])
+        if threshold.date() <= datetime.fromisoformat(transaction["postDate"]).date()
     ]
 
     return filtered_account_transactions
