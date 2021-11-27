@@ -1,4 +1,5 @@
 spikes/cert.p12
+spikes/responses/
 cert.p12
 .idea
 .env
