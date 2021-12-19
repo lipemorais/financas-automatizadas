@@ -20,7 +20,7 @@ def send_account_transaction(account_transactions: [dict]) -> [dict]:
             "transaction": {
                 "account_id": nuconta_account_id,
                 "date": account_transaction["postDate"],
-                "amount": int(account_transaction["amount"] * 1000),
+                "amount": -int(account_transaction["amount"] * 1000),
                 "payee_id": None,
                 "payee_name": None,
                 "category_id": None,
