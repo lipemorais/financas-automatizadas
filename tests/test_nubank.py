@@ -8,27 +8,30 @@ class AccountTest(TestCase):
     @freeze_time("2021-09-07")
     def test_get_account_feed_events(self):
         # Arrange
-        account_feed = [
+        account_statements = [
             {
                 "id": "6137cd3a-58a4-4a0a-a04e-8be7b347d38d",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "LIVEPIX LTDA\nR$\xa01,00",
                 "postDate": "2021-09-07",
+                "amount": 1.0,
             },
             {
                 "id": "61322d34-c3fa-4c02-98cb-05577381e44f",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "THIAGO BARELLA\nR$\xa051.814,00",
                 "postDate": "2021-09-03",
+                "amount": 51814.0,
             },
             {
                 "id": "61320fd0-e9c4-4e8e-9b2a-fe4f9ec366dd",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "Josemar Afrovulto\nR$\xa03.233,36",
                 "postDate": "2021-09-03",
+                "amount": 3233.36,
             },
             {
                 "id": "613202d0-f7fc-451c-91fb-26a470e654b3",
@@ -80,8 +83,8 @@ class AccountTest(TestCase):
 
         # Act
         filtered_transactions = filter_account_transactions(
-            account_feed=account_feed, threshold=datetime.now()
+            account_statements=account_statements, threshold=datetime.now()
         )
 
         # Assert
-        self.assertEqual(filtered_transactions, expected_transactions)
+        self.assertEqual(expected_transactions, filtered_transactions)

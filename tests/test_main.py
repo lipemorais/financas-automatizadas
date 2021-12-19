@@ -19,27 +19,30 @@ class MainTest(TestCase):
     ):
         # Arrange
         MockedNubank = MagicMock()
-        account_feed_response = [
+        account_statements = [
             {
                 "id": "6137cd3a-58a4-4a0a-a04e-8be7b347d38d",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "LIVEPIX LTDA\nR$\xa01,00",
                 "postDate": "2021-09-07",
+                "amount": 1.0,
             },
             {
                 "id": "61322d34-c3fa-4c02-98cb-05577381e44f",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "THIAGO BARELLA\nR$\xa051.814,00",
                 "postDate": "2021-09-03",
+                "amount": 51814.0,
             },
             {
                 "id": "61320fd0-e9c4-4e8e-9b2a-fe4f9ec366dd",
-                "__typename": "GenericFeedEvent",
+                "__typename": "PixTransferOutEvent",
                 "title": "Transferência enviada",
                 "detail": "Josemar Afrovulto\nR$\xa03.233,36",
                 "postDate": "2021-09-03",
+                "amount": 3233.36,
             },
             {
                 "id": "613202d0-f7fc-451c-91fb-26a470e654b3",
@@ -140,7 +143,7 @@ class MainTest(TestCase):
         }
         mocked_nu_instance = MagicMock()
         MockedNubank.return_value = mocked_nu_instance
-        mocked_nu_instance.get_account_feed.return_value = account_feed_response
+        mocked_nu_instance.get_account_statements.return_value = account_statements
         mocked_nu_instance.get_card_feed.return_value = card_feed_response
 
         ynab_account_transaction_response = {

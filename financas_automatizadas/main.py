@@ -28,11 +28,11 @@ def report_transactions(account, created_transaction_in_ynab):
 
 def sync_account(nubank_client: Nubank) -> [dict]:
     pprint("Sync Account starting")
-    account_feed = nubank_client.get_account_feed()
+    account_statements = nubank_client.get_account_statements()
 
     yesterday = datetime.now() - timedelta(days=1)
     filtered_account_transactions = nubank.filter_account_transactions(
-        account_feed=account_feed, threshold=yesterday
+        account_statements=account_statements, threshold=yesterday
     )
 
     created_transactions_in_ynab = ynab.send_account_transaction(

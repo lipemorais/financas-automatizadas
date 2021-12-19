@@ -24,10 +24,12 @@ def setup_nubank_client_authentication(nubank_client):
     return nubank_client
 
 
-def filter_account_transactions(account_feed: [dict], threshold: datetime) -> [dict]:
+def filter_account_transactions(
+    account_statements: [dict], threshold: datetime
+) -> [dict]:
     filtered_account_transactions = [
-        parse_pix_transaction(transaction)
-        for transaction in account_feed
+        transaction
+        for transaction in account_statements
         if threshold.date() <= datetime.fromisoformat(transaction["postDate"]).date()
     ]
 
