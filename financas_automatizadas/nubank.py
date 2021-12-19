@@ -36,10 +36,10 @@ def filter_account_transactions(
     return filtered_account_transactions
 
 
-def filter_card_transactions(card_feed: [dict], threshold: datetime):
+def filter_card_transactions(card_statements: [dict], threshold: datetime):
     filtered_card_transactions = [
         transaction
-        for transaction in card_feed
+        for transaction in card_statements
         if threshold < isoparse(transaction["time"])
     ]
 

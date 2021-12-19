@@ -45,11 +45,11 @@ def sync_account(nubank_client: Nubank) -> [dict]:
 
 def sync_card(nubank_client: Nubank) -> [dict]:
     pprint("Sync Card starting")
-    card_feed = nubank_client.get_card_feed()["events"]
+    card_statements = nubank_client.get_card_statements()
 
     yesterday = datetime.now(tz=tzutc()) - timedelta(days=1)
     filtered_card_transactions = nubank.filter_card_transactions(
-        card_feed=card_feed, threshold=yesterday
+        card_statements=card_statements, threshold=yesterday
     )
 
     created_transactions_in_ynab = ynab.send_card_transaction(
