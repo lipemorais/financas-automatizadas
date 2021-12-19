@@ -1,28 +1,45 @@
 # TODO
-- CRON options
-  - Github Actions - https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
-  - Cron no computador
-  - Heroku Schedule
+- pular caso algum problema na lista aconteça
+  - Utilizar Projects do Github para o projeto
 - Account
   - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - NICE_TO_HAVE: Add mypy to verify type hint
-- NICE_TO_HAVE: schemas
+- NICE_TO_HAVE: schemas(https://pypi.org/project/schema/) ou Pydantic(https://pydantic-docs.helpmanual.io/)
 - add CI
+- Remover ids fixos no YNAB
+- Produtizar: Tornar fácil para que outras pessoas programadoras usem
+  - Forkable
+- Adicionar Code Climate para 
+  - Qualidade de código
+  - Cobertura de testes
+- Referência: https://github.com/cuducos/calculadora-do-cidadao
+- Usar Python Poetry
+- Usar Read The Docs
+  - Adicionar testes de mutação com [mutmut](https://github.com/boxed/mutmut)
+    - Alternativas: https://github.com/mutpy/mutpy & https://github.com/sixty-north/cosmic-ray
 
-# DONE 
- - Spikes with pynubank
- - Setup python-decouple
- - Spike with YNAB API
- - Tests instructions to README
- - Create a README
-     - Setup instruction
- - Account
-  - Put everything together on main
-  - Get transactions
-  - Filter transactions
-  - Send it to ynab - transaction_schema = {"amount": 000, "category": "string", "date": "2021-09-07"}
-- Card
-  - Send it to ynab
-  - Implement card sync at main function
-  - Get card transactions
-  - Filter card transactions
+# DONE ✅
+ - Spikes with pynubank ✅
+ - Setup python-decouple ✅
+ - Spike with YNAB API ✅
+ - Tests instructions to README ✅
+ - Create a README ✅
+     - Setup instruction ✅
+ - Account ✅
+  - Put everything together on main ✅
+  - Get transactions ✅
+  - Filter transactions ✅
+  - Send it to ynab - transaction_schema = {"amount": 000, "category": "string", "date": "2021-09-07"} ✅
+- Card ✅
+  - Send it to ynab ✅
+  - Implement card sync at main function ✅
+  - Get card transactions ✅
+  - Filter card transactions ✅
+- CRON options
+  - ✅ Github Actions - https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#scheduled-events
+  - ❌ Cron no computador
+  - ❌ Heroku Schedule
+- Usar getStatements ✅
+  - Conta ✅
+  - Cartão ✅
+- inverter  valores positivos no YNAB ✅
