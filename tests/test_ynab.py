@@ -48,7 +48,7 @@ class SendAccountTransactionsToYNABTest(TestCase):
         self.assertEqual(transactions, [expected_ynab_transaction_response])
 
     @requests_mock.Mocker()
-    def test_send_card_transaction(self, requests_mock: requests_mock.Mocker):
+    def test_send_card_transaction(self, requests_mocker: requests_mock.Mocker):
         # Arrange
         expected_ynab_transaction_responses = [
             {
@@ -147,7 +147,7 @@ class SendAccountTransactionsToYNABTest(TestCase):
             },
         ]
 
-        requests_mock.post(
+        requests_mocker.post(
             "https://api.youneedabudget.com/v1/budgets/72bf90ed-5c22-4f88-bc02-95fcd82474cb/transactions",
             [
                 {"json": expected_ynab_transaction_responses[0], "status_code": 201},
