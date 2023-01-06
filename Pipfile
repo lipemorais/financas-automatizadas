@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pynubank = "*"
 python-decouple = "*"
 requests = "*"
 python-dateutil = "*"
 ynab-sdk = "*"
+pynubank = "==2.21.0"
 
 [dev-packages]
 ipdb = "*"
