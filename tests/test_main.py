@@ -188,5 +188,5 @@ class MainTest(TestCase):
 
         # Assert
         self.assertEqual(
-            result, [ynab_account_transaction_response, ynab_card_transaction_response]
+            [ynab_account_transaction_response, ynab_card_transaction_response], result
         )
