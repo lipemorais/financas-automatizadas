@@ -28,13 +28,13 @@ def setup_nubank_client_authentication(nubank_client):
     return nubank_client
 
 
-def filter_account_transactions(
-    account_statements: [dict], threshold: datetime
-) -> [dict]:
+def filter_account_transactions(account_statements: [dict]) -> [dict]:
     filtered_account_transactions = [
-        transaction
-        for transaction in account_statements
-        if threshold.date() <= datetime.fromisoformat(transaction["postDate"]).date()
+        transaction["node"]
+        for transaction in account_statements["edges"]
+        if transaction["node"]["strikethrough"] is False
+        and transaction["node"]["iconKey"] != "nuds_v2_icon.calendar_scheduled"
+        and transaction["node"]["iconKey"] != "nuds_v2_icon.clock"
     ]
 
     return filtered_account_transactions

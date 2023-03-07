@@ -30,13 +30,20 @@ class SendAccountTransactionsToYNABTest(TestCase):
         )
         account_transactions = [
             {
-                "__typename": "PixTransferOutEvent",
-                "amount": 1.0,
-                "detail": "LIVEPIX LTDA\nR$\xa01,00",
-                "id": "6137cd3a-58a4-4a0a-a04e-8be7b347d38d",
-                "postDate": "2021-09-07",
-                "title": "Transferência enviada",
-            }
+                "amount": 1248.73,
+                "detail": "Imposto de casa ",
+                "detailsDeeplink": "nuapp://flutter/savings/details-screen/type/BARCODE_PAYMENT/id/63b43cad-c44a-4e75-aa76-605550d0f608",
+                "displayDate": "08 FEV",
+                "footer": "R$\xa01.248,73",
+                "iconKey": "nuds_v2_icon.calendar_scheduled",
+                "id": "63b43cad-c44a-4e75-aa76-605550d0f608",
+                "kind": "NEUTRAL",
+                "postDate": "2023-02-08",
+                "showClock": False,
+                "strikethrough": False,
+                "tags": ["money-out", "payments"],
+                "title": "Pagamento agendado",
+            },
         ]
 
         # Act
