@@ -1,5 +1,5 @@
 # Finanças Automatizadas
-
+[![Sync transactions from Nubank to my YNAB(You Need A Budget) every day at 4am(7 utc)](https://github.com/lipemorais/financas-automatizadas/actions/workflows/sync-nubank-to-ynab.yml/badge.svg)](https://github.com/lipemorais/financas-automatizadas/actions/workflows/sync-nubank-to-ynab.yml)
 ---
 
 ## Objetivo
