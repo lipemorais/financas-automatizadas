@@ -1,7 +1,7 @@
-name: Sync transactions from Nubank to my YNAB(You Need A Budget) every day at 4am(7 utc)
+name: Sync transactions from Nubank to my YNAB(You Need A Budget) every 4 hours
 on:
   schedule:
-    - cron: 0 1 * * * # Every day 10PM Brazilian time(-3 UTC)
+    - cron: 0 */4 * * * # Every 4 hours
   push:
       branches:
         - trunk
