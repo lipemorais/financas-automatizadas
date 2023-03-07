@@ -19,7 +19,11 @@ def setup_nubank_client_authentication(nubank_client):
     PATH_TO_CERTIFICATE = config("PATH_TO_CERTIFICATE")
     setup_nubank_certificate(NUBANK_CERTIFICATE)
 
-    nubank_client.authenticate_with_cert(CPF, PASSWORD, PATH_TO_CERTIFICATE)
+    refresh_token = nubank_client.authenticate_with_cert(
+        CPF, PASSWORD, PATH_TO_CERTIFICATE
+    )
+
+    nubank_client.authenticate_with_refresh_token(refresh_token, PATH_TO_CERTIFICATE)
 
     return nubank_client
 
