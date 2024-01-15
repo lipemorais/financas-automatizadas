@@ -25,3 +25,9 @@ requests-mock = "^1.11.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py", "*_tests.py"]
+addopts = "-vv --cov=financas_automatizadas --durations=5 --disable-warnings"
+testpaths = ["tests"]
+console_output_style = "progress"
