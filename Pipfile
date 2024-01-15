@@ -8,7 +8,7 @@ python-decouple = "*"
 requests = "*"
 python-dateutil = "*"
 ynab-sdk = "*"
-pynubank = "==2.21.0"
+pynubank = "==2.25.0"
 
 [dev-packages]
 ipdb = "*"
