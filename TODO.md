@@ -1,5 +1,9 @@
 # TODO
-- pular caso algum problema na lista aconteça
+- Usar Python Poetry
+  - Dependências✅
+  - Configurações para rodar o Pytest✅
+  - Atualizar script de execução no github actions✅
+- pular caso algum problema na lista aconteça de transações na hora de enviar para o YNAB
 - Account
   - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - NICE_TO_HAVE: Add mypy to verify type hint
@@ -12,7 +16,6 @@
   - Qualidade de código
   - Cobertura de testes
 - Referência: https://github.com/cuducos/calculadora-do-cidadao
-- Usar Python Poetry
 - Usar Read The Docs
   - Adicionar testes de mutação com [mutmut](https://github.com/boxed/mutmut)
     - Alternativas: https://github.com/mutpy/mutpy & https://github.com/sixty-north/cosmic-ray
