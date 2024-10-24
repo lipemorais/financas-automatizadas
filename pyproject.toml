@@ -1,33 +1,45 @@
-[tool.poetry]
+[project]
 name = "financas-automatizadas"
 version = "0.1.0"
-description = "\"Automatizando o envio das minhas transações para o YNAB\""
-authors = ["FeliPython <felipejpa15@gmail.com>"]
+description = "My finance management project"
 readme = "README.md"
+requires-python = ">=3.12"
 
-[tool.poetry.dependencies]
-python = "^3.12"
-python-decouple = "^3.8"
-requests = "^2.31.0"
-python-dateutil = "^2.8.2"
-pynubank = "^2.25.0"
-ynab-sdk = "^0.5.0"
-
-
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.1.13"
-ipdb = "^0.13.13"
-freezegun = "^1.4.0"
-pytest = "^7.4.4"
-pytest-cov = "^4.1.0"
-requests-mock = "^1.11.0"
+dependencies = [
+    "python-decouple",
+    "requests",
+    "python-dateutil",
+    "ynab-sdk",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/financas_automatizadas"]
 
 [tool.pytest.ini_options]
 python_files = ["test_*.py", "*_tests.py"]
 addopts = "-vv --cov=financas_automatizadas --durations=5 --disable-warnings"
 testpaths = ["tests"]
 console_output_style = "progress"
+
+[tool.ruff]
+select = ["E", "F", "I"]
+ignore = []
+line-length = 88
+
+[tool.uv]
+dev-dependencies = [
+    "freezegun>=1.5.1",
+    "ipdb>=0.13.13",
+    "pydantic>=2.9.2",
+    "pytest>=8.3.3",
+    "pytest-cov>=5.0.0",
+    "requests-mock>=1.12.1",
+    "ruff>=0.6.5",
+]
