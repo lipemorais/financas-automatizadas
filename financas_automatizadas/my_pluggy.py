@@ -1,0 +1,83 @@
+from datetime import timedelta, date, datetime
+from unittest.mock import ANY
+
+import requests
+from decouple import config
+
+
+from financas_automatizadas.schemas import Transaction
+
+PLUGGY_URL = "https://api.pluggy.ai/"
+PLUGGY_CLIENT_ID = config("PLUGGY_CLIENT_ID")
+PLUGGY_CLIENT_SECRET = config("PLUGGY_CLIENT_SECRET")
+
+
+def get_api_key(client_id: str, client_secret: str) -> str:
+    pluggy_auth_url = "https://api.pluggy.ai/auth"
+    payload = {
+        "clientId": client_id,
+        "clientSecret": client_secret,
+    }
+
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/json",
+    }
+
+    response = requests.post(
+        pluggy_auth_url,
+        json=payload,
+        headers=headers,
+    )
+    data = response.json()
+    api_key = data["apiKey"]
+
+    return api_key
+
+
+headers_with_api_key = {
+    "accept": "application/json",
+    "X-API-KEY": get_api_key(
+        client_id=PLUGGY_CLIENT_ID,
+        client_secret=PLUGGY_CLIENT_SECRET,
+    ),
+}
+
+
+# get account/credit card transactions
+def normalize_transactions(pluggy_transactions) -> [Transaction]:
+    normalized_transactions = []
+
+    for transaction in pluggy_transactions:
+        new_transaction = Transaction(
+            external_id=transaction["id"],
+            amount=int(transaction["amount"] * 100),  # everything in cents
+            description=transaction["description"].strip(),
+            date=datetime.fromisoformat(
+                transaction["date"].replace("Z", "+00:00")
+            ).date(),
+        )
+
+        normalized_transactions.append(new_transaction)
+
+    return normalized_transactions
+
+
+def get_transactions(account_id: str) -> list[ANY]:
+    account_transactions_url = f"{PLUGGY_URL}transactions"
+    today = date.today()
+    a_week_ago = today - timedelta(days=7)
+
+    response = requests.get(
+        url=f"{account_transactions_url}",
+        params={
+            "accountId": account_id,
+            "from": a_week_ago.strftime("%Y-%m-%d"),
+            "to": today.strftime("%Y-%m-%d"),
+            "page": 1,
+            "pageSize": 50,
+        },
+        headers=headers_with_api_key,
+    )
+    transactions = normalize_transactions(response.json()["results"])
+    return transactions
