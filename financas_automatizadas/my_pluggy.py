@@ -5,7 +5,7 @@ import requests
 from decouple import config
 
 
-from financas_automatizadas.schemas import Transaction
+from schemas import Transaction
 
 PLUGGY_URL = "https://api.pluggy.ai/"
 PLUGGY_CLIENT_ID = config("PLUGGY_CLIENT_ID")
@@ -85,6 +85,5 @@ def get_transactions(account_id: str, api_key: str) -> list[ANY]:
             "X-API-KEY": api_key,
         },
     )
-    print(response.json())
     transactions = normalize_transactions(response.json()["results"])
     return transactions
