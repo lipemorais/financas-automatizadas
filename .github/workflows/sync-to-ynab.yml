@@ -1,0 +1,29 @@
+name: Sync transactions from Nubank and Itaú to my YNAB(You Need A Budget) every 1 hour
+on:
+  schedule:
+    - cron: 0 */1 * * * # Every 1 hour
+  push:
+      branches:
+        - trunk
+jobs:
+  sync:
+    env:
+      YNAB_TOKEN: ${{ secrets.YNAB_TOKEN }}
+      PLUGGY_CLIENT_ID: ${{ secrets.PLUGGY_CLIENT_ID }}
+      PLUGGY_CLIENT_SECRET: ${{ secrets.PLUGGY_CLIENT_SECRET }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+      - run: uv --version
+      - run: python --version
+      - name: Run sync to ynab
+        run: |
+          uv run python financas_automatizadas/main.py
