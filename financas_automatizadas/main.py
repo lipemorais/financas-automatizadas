@@ -1,8 +1,8 @@
 from decouple import config
 
-from financas_automatizadas import ynab
-from financas_automatizadas.my_pluggy import get_transactions
-from financas_automatizadas.schemas import Transaction
+import ynab
+from my_pluggy import get_transactions
+from schemas import Transaction
 from my_pluggy import get_api_key
 
 
@@ -43,6 +43,10 @@ def main() -> [dict]:
 
     transactions = {}
     for account_id_pair in account_id_pairs:
+        print("######")
+        print(f'SYNCING {account_id_pair["name"]}')
+        print("######")
+
         transactions: [Transaction] = get_transactions(
             account_id=account_id_pair["pluggy"],
             api_key=api_key,
@@ -55,6 +59,9 @@ def main() -> [dict]:
             )
         )
 
+    print("######")
+    print(f"SYNCED {len(transactions)} TRANSACTIONS")
+    print("######")
     return transactions
 
 
