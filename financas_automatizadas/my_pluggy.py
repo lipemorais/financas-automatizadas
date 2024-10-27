@@ -51,11 +51,14 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
     for transaction in pluggy_transactions:
         new_transaction = Transaction(
             external_id=transaction["id"],
-            amount=int(transaction["amount"] * 100),  # everything in cents
+            amount=int(
+                transaction["amount"] * 1000
+            ),  # ynab data format ref: https://api.ynab.com/#response-format
             description=transaction["description"].strip(),
             date=datetime.fromisoformat(
                 transaction["date"].replace("Z", "+00:00")
             ).date(),
+            kind=transaction["type"],
         )
 
         normalized_transactions.append(new_transaction)
@@ -63,7 +66,7 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
     return normalized_transactions
 
 
-def get_transactions(account_id: str) -> list[ANY]:
+def get_transactions(account_id: str, api_key: str) -> list[ANY]:
     account_transactions_url = f"{PLUGGY_URL}transactions"
     today = date.today()
     a_week_ago = today - timedelta(days=7)
@@ -77,7 +80,11 @@ def get_transactions(account_id: str) -> list[ANY]:
             "page": 1,
             "pageSize": 50,
         },
-        headers=headers_with_api_key,
+        headers={
+            "accept": "application/json",
+            "X-API-KEY": api_key,
+        },
     )
+    print(response.json())
     transactions = normalize_transactions(response.json()["results"])
     return transactions
