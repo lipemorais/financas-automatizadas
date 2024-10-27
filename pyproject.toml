@@ -10,6 +10,7 @@ dependencies = [
     "requests",
     "python-dateutil",
     "ynab-sdk",
+    "pydantic>=2.9.2",
 ]
 
 [build-system]
@@ -37,7 +38,6 @@ line-length = 88
 dev-dependencies = [
     "freezegun>=1.5.1",
     "ipdb>=0.13.13",
-    "pydantic>=2.9.2",
     "pytest>=8.3.3",
     "pytest-cov>=5.0.0",
     "requests-mock>=1.12.1",
