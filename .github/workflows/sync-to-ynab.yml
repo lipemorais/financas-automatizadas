@@ -23,7 +23,12 @@ jobs:
           version: "latest"
           enable-cache: true
       - run: uv --version
+      - name: Install Python 3.12
+        run: uv python install 3.12
       - run: python --version
+      - name: Verify cache
+        if: steps.setup-uv.outputs.cache-hit == 'true'
+        run: echo "Cache was restored"
       - name: Run sync to ynab
         run: |
           uv run python financas_automatizadas/main.py
