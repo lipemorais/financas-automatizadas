@@ -1,13 +1,14 @@
 # TODO
-- Usar Python Poetry
-  - Dependências✅
-  - Configurações para rodar o Pytest✅
-  - Atualizar script de execução no github actions✅
+- Usar YNAB SDK do André Roggeri? https://github.com/andreroggeri/ynab-sdk-python
+- Adicionar ruff
+- Adicionar coverage
+- Usar HTTPX no lugar do requests
+  - Encontrar uma lib de mock do HTTPX as an alternative to requests mock
+- pydantic config would be nice as well
 - pular caso algum problema na lista aconteça de transações na hora de enviar para o YNAB
 - Account
   - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - NICE_TO_HAVE: Add mypy to verify type hint
-- NICE_TO_HAVE: schemas(https://pypi.org/project/schema/) ou Pydantic(https://pydantic-docs.helpmanual.io/)
 - add CI
 - Remover ids fixos no YNAB
 - Produtizar: Tornar fácil para que outras pessoas programadoras usem
@@ -46,3 +47,9 @@
    - Cartão ✅
  - inverter  valores positivos no YNAB ✅
 - ❌ Utilizar Projects do Github para o projeto
+- Usar uv :)✅
+- ❌ Usar Python Poetry
+  - Dependências✅
+  - Configurações para rodar o Pytest✅
+  - Atualizar script de execução no github actions✅
+  - NICE_TO_HAVE: schemas(https://pypi.org/project/schema/) ou Pydantic(https://pydantic-docs.helpmanual.io/)✅
