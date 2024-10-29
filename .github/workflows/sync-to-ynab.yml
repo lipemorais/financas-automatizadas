@@ -25,7 +25,7 @@ jobs:
       - run: uv --version
       - name: Install Python 3.12
         run: uv python install 3.12
-      - run: python --version
+      - run: uv run python --version
       - name: Verify cache
         if: steps.setup-uv.outputs.cache-hit == 'true'
         run: echo "Cache was restored"
