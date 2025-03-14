@@ -10,7 +10,8 @@ def main() -> [dict]:
     PLUGGY_CLIENT_ID = config("PLUGGY_CLIENT_ID")
     PLUGGY_CLIENT_SECRET = config("PLUGGY_CLIENT_SECRET")
     api_key = get_api_key(
-        client_id=PLUGGY_CLIENT_ID, client_secret=PLUGGY_CLIENT_SECRET
+        client_id=PLUGGY_CLIENT_ID,
+        client_secret=PLUGGY_CLIENT_SECRET,
     )
 
     # YNAB
