@@ -1,7 +1,7 @@
-name: Sync transactions from Nubank and Itaú to my YNAB(You Need A Budget) every 1 hour
+name: Sync transactions from Nubank and Itaú to my YNAB(You Need A Budget) every day at 6AM
 on:
   schedule:
-    - cron: 0 */1 * * * # Every 1 hour
+    - cron: 0 6 * * *  # Every day at 6AM
   push:
       branches:
         - trunk
