@@ -42,7 +42,7 @@ def main() -> [dict]:
         },
     ]
 
-    transactions = {}
+    created_transactions = []
     for account_id_pair in account_id_pairs:
         print("######")
         print(f'SYNCING {account_id_pair["name"]}')
@@ -53,12 +53,12 @@ def main() -> [dict]:
             api_key=api_key,
         )
 
-        transactions.append(
-            ynab.send_transactions_to_ynab(
-                transactions=transactions,
-                account_id=account_id_pair["ynab"],
-            )
+        transactions_to_ynab = ynab.send_transactions_to_ynab(
+            transactions=transactions,
+            account_id=account_id_pair["ynab"],
         )
+
+        created_transactions += transactions_to_ynab
 
     print("######")
     print(f"SYNCED {len(transactions)} TRANSACTIONS")
