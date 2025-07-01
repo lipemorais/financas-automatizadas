@@ -49,6 +49,12 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
     normalized_transactions = []
 
     for transaction in pluggy_transactions:
+        description = transaction["description"].strip()
+        description_parts = description.split("|")
+        payee=None
+        if len(description_parts) >= 2:
+            payee=description_parts[1]
+
         new_transaction = Transaction(
             external_id=transaction["id"],
             amount=int(
@@ -59,6 +65,7 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
                 transaction["date"].replace("Z", "+00:00")
             ).date(),
             kind=transaction["type"],
+            payee=payee,
         )
 
         normalized_transactions.append(new_transaction)

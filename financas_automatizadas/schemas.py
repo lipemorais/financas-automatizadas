@@ -15,3 +15,4 @@ class Transaction(BaseModel):
     description: str
     date: date
     kind: str
+    payee: str

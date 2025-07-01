@@ -29,11 +29,11 @@ def send_transactions_to_ynab(transactions: [Transaction], budget_id, account_id
                 "date": transaction.date.strftime("%Y-%m-%d"),
                 "amount": amount,
                 "payee_id": None,
-                "payee_name": None,
+                "payee_name": transaction.payee,
                 "category_id": None,
                 "memo": transaction.description,
                 "cleared": "cleared",
-                "approved": True,
+                "approved": True, # Can we get rid of this?
                 "import_id": transaction.external_id,
             }
         }
