@@ -10,9 +10,6 @@
   - NICE_TO_HAVE: Send all transactions at once ynab.send_account_transaction
 - NICE_TO_HAVE: Add mypy to verify type hint
 - add CI
-- Remover ids fixos no YNAB
-- Produtizar: Tornar fácil para que outras pessoas programadoras usem
-  - Forkable
 - Adicionar Code Climate para 
   - Qualidade de código
   - Cobertura de testes
@@ -53,3 +50,6 @@
   - Configurações para rodar o Pytest✅
   - Atualizar script de execução no github actions✅
   - NICE_TO_HAVE: schemas(https://pypi.org/project/schema/) ou Pydantic(https://pydantic-docs.helpmanual.io/)✅
+- Produtizar: Tornar fácil para que outras pessoas programadoras usem ✅
+  - Forkable
+- Remover ids fixos no YNAB ✅
