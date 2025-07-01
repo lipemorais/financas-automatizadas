@@ -61,9 +61,9 @@ def main() -> [dict]:
         created_transactions += transactions_to_ynab
 
     print("######")
-    print(f"SYNCED {len(transactions)} TRANSACTIONS")
+    print(f"SYNCED {len(created_transactions)} TRANSACTIONS")
     print("######")
-    return transactions
+    return created_transactions
 
 
 
