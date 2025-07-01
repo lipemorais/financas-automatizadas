@@ -15,7 +15,6 @@ setup:
 	@echo "Setting up venv..."
 	@uv venv
 	@echo "Copying configuration files if they don't already exist..."
-	@if ! [ -f .env ]; then cp .env.example .env; echo "❗ NEXT STEP - fill in .env file with API credentials"; fi
-	@if ! [ -f accounts.yml ]; then cp accounts.yml.example accounts.yml; echo "❗ NEXT STEP - fill in accounts.yml file with bank account IDs"; fi
+	@if ! [ -f .env ]; then cp .env.example .env; echo "❗ NEXT STEP - fill in .env file, using comments in file for guidance"; fi
 
 s: setup

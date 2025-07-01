@@ -13,7 +13,7 @@ PLUGGY_CLIENT_SECRET = config("PLUGGY_CLIENT_SECRET")
 
 
 def get_api_key(client_id: str, client_secret: str) -> str:
-    pluggy_auth_url = "https://api.pluggy.ai/auth"
+    pluggy_auth_url = f"{PLUGGY_URL}auth"
     payload = {
         "clientId": client_id,
         "clientSecret": client_secret,

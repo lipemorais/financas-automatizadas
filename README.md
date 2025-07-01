@@ -8,37 +8,25 @@ Objetivo
 O objetivo desse projeto é pegar suas transações do Nubank e enviar para o YNAB
 
 Prerequisites
-------------
-1. An account with `pluggy.ai`
-1. A connection to Nubank in Pluggy, created
-1. The `Client ID` and `Client Secret` of that connection
-1. An application created in `pluggy.ai`
-    - `CLIENT_ID`
-    - `CLIENT_SECRET`
-1. Nubank account IDs (from My Pluggy)
-1. Copy the `.env.example` to be
+-------------
+You must go through [all the steps here](https://github.com/pluggyai/meu-pluggy?tab=readme-ov-file#connecting-your-bank-account-to-meupluggy) to create a MyPluggy account, a developer portal account, and link them together!
 
+Use
+---
+### Running Locally
+1. Fork this repo and clone your fork
+2. [Install the `uv` Python package manager](https://docs.astral.sh/uv/getting-started/installation/#pypi)
+3. Setup the repo:
+   ```
+   make setup
+   ```
+   and fill in the created `.env` file, using the comments as guidance on where to get the values.
+3. Sync transactions with:
+   ```
+   make run
+   ```
 
-
-
-## Como emitir o certificado
-1. Entre na virtualenv usando o comando `pipenv shell`
-2. Execute o commando `pynubank` e siga o processo
-3. Para gerar o base64 do certificado utilize o comando `cat cert.p12 | base64 | pbcopy`
-4. Com isso vá a váriável de ambiente  `NUBANK CERTIFICATE` no github, cole o certificado em base64 e salve
-5. Tudo dever voltar a funcionar como deveria
-
-## Tasks
-
-### Setup
-`make setup` or `make s`
-
-### Test
-`make test` or `make t`
-
-### Run
-`make run` or `make r`
-
-# Resources
-
-- YNAB API doc => https://api.youneedabudget.com/v1
+### Development
+```
+make test
+```
