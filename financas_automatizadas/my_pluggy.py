@@ -13,7 +13,7 @@ PLUGGY_CLIENT_SECRET = config("PLUGGY_CLIENT_SECRET")
 
 
 def get_api_key(client_id: str, client_secret: str) -> str:
-    pluggy_auth_url = "https://api.pluggy.ai/auth"
+    pluggy_auth_url = f"{PLUGGY_URL}auth"
     payload = {
         "clientId": client_id,
         "clientSecret": client_secret,
@@ -49,6 +49,12 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
     normalized_transactions = []
 
     for transaction in pluggy_transactions:
+        description = transaction["description"].strip()
+        description_parts = description.split("|")
+        payee=None
+        if len(description_parts) >= 2:
+            payee=description_parts[1]
+
         new_transaction = Transaction(
             external_id=transaction["id"],
             amount=int(
@@ -59,6 +65,7 @@ def normalize_transactions(pluggy_transactions) -> [Transaction]:
                 transaction["date"].replace("Z", "+00:00")
             ).date(),
             kind=transaction["type"],
+            payee=payee,
         )
 
         normalized_transactions.append(new_transaction)
