@@ -10,10 +10,12 @@ import os
 
 NAME_ENVVAR_SUFFIX = "NAME"
 PLUGGY_ID_ENVVAR_SUFFIX = "PLUGGY_ID"
+YNAB_BUDGET_ID_ENVVAR_SUFFIX = "YNAB_BUDGET_ID"
 YNAB_ID_ENVVAR_SUFFIX = "YNAB_ID"
 ACCT_ENVVAR_SUFFIXES = [
     NAME_ENVVAR_SUFFIX,
     PLUGGY_ID_ENVVAR_SUFFIX,
+    YNAB_BUDGET_ID_ENVVAR_SUFFIX,
     YNAB_ID_ENVVAR_SUFFIX,
 ]
 
@@ -76,6 +78,7 @@ def main() -> [dict]:
     for account in bank_accounts:
         name = account[NAME_ENVVAR_SUFFIX]
         pluggy_id = account[PLUGGY_ID_ENVVAR_SUFFIX]
+        ynab_budget_id = account[YNAB_BUDGET_ID_ENVVAR_SUFFIX]
         ynab_id = account[YNAB_ID_ENVVAR_SUFFIX]
 
         print("######")
@@ -90,6 +93,7 @@ def main() -> [dict]:
         transactions.append(
             ynab.send_transactions_to_ynab(
                 transactions=transactions,
+                budget_id=ynab_budget_id,
                 account_id=ynab_id,
             )
         )
@@ -98,8 +102,6 @@ def main() -> [dict]:
     print(f"SYNCED {len(transactions)} TRANSACTIONS")
     print("######")
     return transactions
-
-
 
 if __name__ == "__main__":
     main()
