@@ -1,9 +1,25 @@
-# Finanças Automatizadas
+Finanças Automatizadas
+======================
 [![Sync transactions from Nubank to my YNAB(You Need A Budget) every day at 4am(7 utc)](https://github.com/lipemorais/financas-automatizadas/actions/workflows/sync-nubank-to-ynab.yml/badge.svg)](https://github.com/lipemorais/financas-automatizadas/actions/workflows/sync-nubank-to-ynab.yml)
 ---
 
-## Objetivo
+Objetivo
+--------
 O objetivo desse projeto é pegar suas transações do Nubank e enviar para o YNAB
+
+Prerequisites
+------------
+1. An account with `pluggy.ai`
+1. A connection to Nubank in Pluggy, created
+1. The `Client ID` and `Client Secret` of that connection
+1. An application created in `pluggy.ai`
+    - `CLIENT_ID`
+    - `CLIENT_SECRET`
+1. Nubank account IDs (from My Pluggy)
+1. Copy the `.env.example` to be
+
+
+
 
 ## Como emitir o certificado
 1. Entre na virtualenv usando o comando `pipenv shell`

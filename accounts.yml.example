@@ -1,0 +1,18 @@
+- name: "Your Account Name"  # Can be whatever you please; only used for display in the logs
+
+  # Should be a UUID like 7cfXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX9b
+  # You can find this by...
+  # 1. Opening https://meu.pluggy.ai/
+  # 2. Syncing the accounts you'd like to have access
+  # 3. Clicking on the account
+  # 4. Opening your browser's devtools
+  # 5. Looking at the 'Network' tab, where you should see a request like: /investments?7cfXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX9b
+  pluggy_id: TODO
+
+  # Should be a UUID like 7cfXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX9b
+  # You can find this by..
+  # 1. Opening https://app.ynab.com/
+  # 2. Opening your browser's devtools
+  # 3. Inspecting the account element on the left sidebar
+  # You'll see an element with property: data-account-id="7cfXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXX9b"`
+  ynab_id: TODO
