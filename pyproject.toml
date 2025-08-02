@@ -34,6 +34,11 @@ console_output_style = "progress"
 select = ["E", "F", "I"]
 ignore = []
 line-length = 88
+exclude = [
+    "spikes/",
+    "spikes/**",
+]
+
 
 [tool.uv]
 dev-dependencies = [
@@ -44,3 +49,16 @@ dev-dependencies = [
     "requests-mock>=1.12.1",
     "ruff>=0.6.5",
 ]
+
+[tool.taskipy.tasks]
+# Formatting tasks
+format = "ruff format ."
+format-check = "ruff format --check ."
+
+# Linting tasks
+lint = "ruff check ."
+lint-fix = "ruff check --fix ."
+
+# Combined tasks
+check = "task lint && task format-check"
+fix = "task lint-fix && task format"
