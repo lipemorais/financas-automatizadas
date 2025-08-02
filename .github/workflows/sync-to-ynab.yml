@@ -9,8 +9,10 @@ jobs:
   sync:
     env:
       YNAB_TOKEN: ${{ secrets.YNAB_TOKEN }}
+      YNAB_BUDGET_ID: ${{ secrets.YNAB_BUDGET_ID }}
       PLUGGY_CLIENT_ID: ${{ secrets.PLUGGY_CLIENT_ID }}
       PLUGGY_CLIENT_SECRET: ${{ secrets.PLUGGY_CLIENT_SECRET }}
+      ACCOUNT_PAIRS: ${{ secrets.ACCOUNT_PAIRS }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -18,7 +20,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v3
+        uses: astral-sh/setup-uv@v6
         with:
           version: "latest"
           enable-cache: true
