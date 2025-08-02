@@ -10,10 +10,10 @@ from schemas import Transaction
 PLUGGY_URL = "https://api.pluggy.ai/"
 PLUGGY_CLIENT_ID = config("PLUGGY_CLIENT_ID")
 PLUGGY_CLIENT_SECRET = config("PLUGGY_CLIENT_SECRET")
+PLUGGY_AUTH_URL = "https://api.pluggy.ai/auth"
 
 
 def get_api_key(client_id: str, client_secret: str) -> str:
-    pluggy_auth_url = "https://api.pluggy.ai/auth"
     payload = {
         "clientId": client_id,
         "clientSecret": client_secret,
@@ -25,7 +25,7 @@ def get_api_key(client_id: str, client_secret: str) -> str:
     }
 
     response = requests.post(
-        pluggy_auth_url,
+        PLUGGY_AUTH_URL,
         json=payload,
         headers=headers,
     )
