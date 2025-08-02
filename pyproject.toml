@@ -11,6 +11,7 @@ dependencies = [
     "python-dateutil",
     "ynab-sdk",
     "pydantic>=2.9.2",
+    "taskipy>=1.14.1",
 ]
 
 [build-system]
