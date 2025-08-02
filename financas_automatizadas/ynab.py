@@ -4,6 +4,7 @@ from decouple import config
 from schemas import TransactionKind, Transaction
 
 auth_token = config("YNAB_TOKEN")
+YNAB_BASE_URL = "https://api.youneedabudget.com/v1"
 headers = {"Authorization": "Bearer " + auth_token, "Content-Type": "application/json"}
 
 
@@ -15,10 +16,12 @@ def get_amount(transaction: Transaction) -> int:
         return +abs(transaction.amount)
 
 
-def send_transactions_to_ynab(transactions: [Transaction], account_id) -> [dict]:
-    base_url = "https://api.youneedabudget.com/v1"
-    moraix_budget_id = "72bf90ed-5c22-4f88-bc02-95fcd82474cb"
-    url = f"{base_url}/budgets/{moraix_budget_id}/transactions"
+def send_transactions_to_ynab(
+    transactions: [Transaction],
+    account_id: str,
+    budget_id: str,
+) -> [dict]:
+    url = f"{YNAB_BASE_URL}/budgets/{budget_id}/transactions"
     created_transactions = []
 
     for transaction in transactions:
