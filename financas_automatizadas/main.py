@@ -1,10 +1,8 @@
-from decouple import config
-
 import ynab
 from config import get_account_pairs
-from my_pluggy import get_transactions
+from decouple import config
+from my_pluggy import get_api_key, get_transactions
 from schemas import Transaction
-from my_pluggy import get_api_key
 
 
 def main() -> [dict]:

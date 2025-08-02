@@ -1,11 +1,5 @@
-from unittest import TestCase, mock, skip
-from unittest.mock import MagicMock
 
-import requests_mock
-from freezegun import freeze_time
-from pynubank import MockHttpClient
 
-from financas_automatizadas.main import main
 
 
 

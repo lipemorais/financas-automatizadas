@@ -1,7 +1,6 @@
 import requests
 from decouple import config
-
-from schemas import TransactionKind, Transaction
+from schemas import Transaction, TransactionKind
 
 auth_token = config("YNAB_TOKEN")
 YNAB_BASE_URL = "https://api.youneedabudget.com/v1"

@@ -1,6 +1,8 @@
 from unittest import TestCase
-from financas_automatizadas.ynab import send_account_transaction, send_card_transaction
+
 import requests_mock
+
+from financas_automatizadas.ynab import send_account_transaction, send_card_transaction
 
 
 class SendAccountTransactionsToYNABTest(TestCase):

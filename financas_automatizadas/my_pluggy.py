@@ -1,10 +1,8 @@
-from datetime import timedelta, date, datetime
+from datetime import date, datetime, timedelta
 from unittest.mock import ANY
 
 import requests
 from decouple import config
-
-
 from schemas import Transaction
 
 PLUGGY_URL = "https://api.pluggy.ai/"

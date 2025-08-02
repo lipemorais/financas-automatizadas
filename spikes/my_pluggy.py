@@ -1,7 +1,7 @@
 from datetime import date, timedelta
-from decouple import config
 
 import requests
+from decouple import config
 
 # url = "https://api.pluggy.ai/connectors"
 # url = "https://api.pluggy.ai/accounts"

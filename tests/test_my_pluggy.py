@@ -1,9 +1,9 @@
 from datetime import date
 
-from financas_automatizadas.my_pluggy import get_api_key, get_transactions
 from requests_mock import Mocker
-
 from schemas import Transaction
+
+from financas_automatizadas.my_pluggy import get_api_key, get_transactions
 
 
 def test_get_itau_transactions(requests_mock: Mocker):
